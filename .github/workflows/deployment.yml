@@ -1,0 +1,12 @@
+name: deploy workflow
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: action/checkout@v4
