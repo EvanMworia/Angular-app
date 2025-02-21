@@ -1,0 +1,20 @@
+name: "deploy to s3"
+description: "deploy to s3 bucket using javascript action"
+inputs:
+  bucketName:
+    description: The name of the S3 bucket we are deploying to in aws
+    required: true
+
+  bucketRegion:
+    description: The region in which the s3 bucket was created in
+    required: false
+    default: eu-north-1
+
+  distFiles:
+    description: The files we got from executing the build step
+outputs:
+  URL:
+    description: This is the website/apps URL
+runs:
+  using: "node20"
+  main: "entryPoint.js"

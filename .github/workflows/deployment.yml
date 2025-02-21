@@ -58,5 +58,14 @@ jobs:
           name: dist-files
           path: ./dist
 
-      - name: See Dist Contents
-        run: cd dist && ls
+      - name: Deploy App
+        id: deploy-step
+        uses: ./.github/actions/deployment #pass the path to the action file that contains deployment logic
+        env:
+          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+        with:
+          bucketName: first-ng-app
+          distFiles: ./dist
+      - name: Website Link
+        run: echo "${{steps.deploy-step.outputs.URL}}"
