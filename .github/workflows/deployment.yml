@@ -66,6 +66,6 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
         with:
           bucketName: first-ng-app
-          distFiles: ./dist
+          distFiles: ./dist/angular-app/browser
       - name: Website Link
         run: echo "${{steps.deploy-step.outputs.URL}}"
