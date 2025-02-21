@@ -59,4 +59,4 @@ jobs:
           path: ./dist
 
       - name: See Dist Contents
-        run: ls
+        run: cd dist && ls
