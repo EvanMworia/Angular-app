@@ -14,13 +14,13 @@ async function run() {
 
     // 🚀 Execute AWS CLI command to sync local files to the S3 bucket
     // The --region flag specifies the AWS region for the operation
-    // await exec.exec(
-    //   `aws s3 sync ${distFiles} ${s3Url} --region ${bucketRegion}`
-    // );
-    //This --acl public-read flag ensures all uploaded files are accessible publicly.
     await exec.exec(
-      `aws s3 sync ${distFiles} ${s3Url} --region ${bucketRegion} --acl public-read`
+      `aws s3 sync ${distFiles} ${s3Url} --region ${bucketRegion}`
     );
+    //This --acl public-read flag ensures all uploaded files are accessible publicly.
+    // await exec.exec(
+    //   `aws s3 sync ${distFiles} ${s3Url} --region ${bucketRegion} --acl public-read`
+    // );
 
     // 🌐 Construct the website URL based on the S3 bucket details
     const websiteURL = `http://${bucket}.s3-website-${bucketRegion}.amazonaws.com`;
