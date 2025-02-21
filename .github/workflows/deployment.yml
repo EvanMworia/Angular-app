@@ -45,5 +45,18 @@ jobs:
         with:
           name: dist-files
           path: dist
-      - name: See Path
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v4
+
+      - name: Get Previously Built Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist-files
+          path: ./dist
+
+      - name: See Dist Contents
         run: ls
